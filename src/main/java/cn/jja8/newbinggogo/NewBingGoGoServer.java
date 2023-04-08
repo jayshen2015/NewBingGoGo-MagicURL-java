@@ -114,19 +114,19 @@ public class NewBingGoGoServer extends NanoWSD {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
-            return getReturnError(e);
+            return getReturnError("11111"+e.getMessage());
         }
 
         HttpURLConnection urlConnection;
         try{
             urlConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
-           return getReturnError(e);
+           return getReturnError("222222222"+e.getMessage());
         }
         try {
             urlConnection.setRequestMethod("GET");
         } catch (ProtocolException e) {
-            return getReturnError(e);
+            return getReturnError("333333"+e.getMessage());
         }
         urlConnection.setDoOutput(false);
         urlConnection.setDoInput(true);
@@ -148,13 +148,13 @@ public class NewBingGoGoServer extends NanoWSD {
         try {
             urlConnection.connect();
         } catch (IOException e) {
-            return getReturnError(e);
+            return getReturnError("444444444"+e.getMessage());
         }
         int code;
         try{
             code = urlConnection.getResponseCode();
         } catch (IOException e) {
-            return getReturnError(e);
+            return getReturnError("555555555"+e.getMessage());
         }
         //获取请求状态代码
         if(code!=200){
@@ -174,7 +174,7 @@ public class NewBingGoGoServer extends NanoWSD {
             return getReturnError("此魔法链接服务器无法正常工作，请求被bing拒绝！",e,false);
         }catch (IOException e) {
             urlConnection.disconnect();
-            return getReturnError(e);
+            return getReturnError("66666666"+e.getMessage());
         }
         urlConnection.disconnect();
 
