@@ -41,6 +41,7 @@ public class NewBingGoGoServer extends NanoWSD {
         String ip = new Date()+":"+getIp(session);
         String url = session.getUri();
       //  if(1==1) return getReturnError("test:"+url);
+        
         if(url.equals("/turing/conversation/create")){//创建聊天
             System.out.println(ip+":请求创建聊天");
             return goUrl(session,"https://www.bing.com/turing/conversation/create");
@@ -114,7 +115,7 @@ public class NewBingGoGoServer extends NanoWSD {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
-            return getReturnError("11111"+e.getMessage());
+            return getReturnError("1111111"+e.getMessage());
         }
 
         HttpURLConnection urlConnection;
@@ -124,7 +125,7 @@ public class NewBingGoGoServer extends NanoWSD {
            return getReturnError("222222222"+e.getMessage());
         }
         try {
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod("GET"); 
         } catch (ProtocolException e) {
             return getReturnError("333333"+e.getMessage());
         }
