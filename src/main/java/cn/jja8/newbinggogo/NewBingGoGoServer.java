@@ -186,6 +186,7 @@ public class NewBingGoGoServer extends NanoWSD {
         }
         urlConnection.disconnect();
         a+="5,l:["+len+"]";
+        if(1==1)  return getReturnError(a);
         //创建用于输出的流
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
         return NanoHTTPD.newFixedLengthResponse(
