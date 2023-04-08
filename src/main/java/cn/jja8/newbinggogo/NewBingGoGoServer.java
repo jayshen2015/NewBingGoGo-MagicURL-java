@@ -111,6 +111,9 @@ public class NewBingGoGoServer extends NanoWSD {
 
 
     public static NanoHTTPD.Response goUrl(NanoHTTPD.IHTTPSession session,String stringUrl,Map<String,String> addHeaders){
+        
+        return getReturnError("0000000000000");
+        
         URL url;
         try {
             url = new URL(stringUrl);
