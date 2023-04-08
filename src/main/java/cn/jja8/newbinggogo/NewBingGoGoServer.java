@@ -110,9 +110,7 @@ public class NewBingGoGoServer extends NanoWSD {
     }
 
 
-    public static NanoHTTPD.Response goUrl(NanoHTTPD.IHTTPSession session,String stringUrl,Map<String,String> addHeaders){
-      if(1==1) return getReturnError("0000000000000"+stringUrl);
-        
+    public static NanoHTTPD.Response goUrl(NanoHTTPD.IHTTPSession session,String stringUrl,Map<String,String> addHeaders){        
         URL url;
         try {
             url = new URL(stringUrl);
@@ -136,6 +134,7 @@ public class NewBingGoGoServer extends NanoWSD {
         urlConnection.setUseCaches(true);
         urlConnection.setInstanceFollowRedirects(true);
         urlConnection.setConnectTimeout(3000);
+      if(1==1) return getReturnError("00004.500000"+stringUrl);
 
         //拷贝头信息
         Map<String,String> header = session.getHeaders();
