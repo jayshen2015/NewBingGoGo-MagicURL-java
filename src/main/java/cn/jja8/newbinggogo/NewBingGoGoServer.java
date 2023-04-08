@@ -134,8 +134,7 @@ public class NewBingGoGoServer extends NanoWSD {
         urlConnection.setUseCaches(true);
         urlConnection.setInstanceFollowRedirects(true);
         urlConnection.setConnectTimeout(3000);
-        String a="1";
-        //拷贝头信息
+         //拷贝头信息
         Map<String,String> header = session.getHeaders();
         String[] b = {"cookie","user-agent","accept","accept-language"};
         for (String s : b) {
@@ -144,23 +143,19 @@ public class NewBingGoGoServer extends NanoWSD {
         }
         //添加指定的头部信息
         addHeaders.forEach(urlConnection::addRequestProperty);
-        
-       
 
         //建立链接
         try {
             urlConnection.connect();
-             a+="2";
-        } catch (IOException e) {
-            //return getReturnError("444444444"+e.getMessage());
+         } catch (IOException e) {
+            return getReturnError("444444444"+e.getMessage());
         }
         
         int code;
         try{
             code = urlConnection.getResponseCode();
-            a+="["+code+"]";
         } catch (IOException e) {
-           // return getReturnError("555555555"+e.getMessage());
+             return getReturnError("555555555"+e.getMessage());
         }
         
         
@@ -169,8 +164,7 @@ public class NewBingGoGoServer extends NanoWSD {
             urlConnection.disconnect();
             return getReturnError("此魔法链接服务器请求被bing拒绝！请稍后再试。错误代码:"+code,null,false);
         }
-        a+="4";
-        //将数据全部读取然后关闭流和链接
+         //将数据全部读取然后关闭流和链接
         int len = urlConnection.getContentLength();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(Math.max(len, 0));
         try(InputStream inputStream = urlConnection.getInputStream()){
@@ -185,8 +179,7 @@ public class NewBingGoGoServer extends NanoWSD {
             return getReturnError("66666666"+e.getMessage());
         }
         urlConnection.disconnect();
-        a+="5,l:["+len+"]";
-        if(1==1)  return getReturnError(a);
+         if(1==1)  return getReturnError(""+code);
         //创建用于输出的流
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
         return NanoHTTPD.newFixedLengthResponse(
