@@ -40,7 +40,7 @@ public class NewBingGoGoServer extends NanoWSD {
         }
         String ip = new Date()+":"+getIp(session);
         String url = session.getUri();
-        if(1==1) return getReturnError("test:"+url);
+      //  if(1==1) return getReturnError("test:"+url);
         if(url.equals("/turing/conversation/create")){//创建聊天
             System.out.println(ip+":请求创建聊天");
             return goUrl(session,"https://www.bing.com/turing/conversation/create");
