@@ -44,10 +44,13 @@ public class NewBingGoGoServer extends NanoWSD {
         
         if(url.equals("/turing/conversation/create")){//创建聊天
             System.out.println(ip+":请求创建聊天");
+            if(1==1) return getReturnError(ip+":请求创建聊天");
             return goUrl(session,"https://www.bing.com/turing/conversation/create");
         }
         if(url.equals("/msrewards/api/v1/enroll")){//加入候补
             System.out.println(ip+":请求加入候补");
+            
+            if(1==1) return getReturnError(ip+":请求加入候补");
             return goUrl(session,"https://www.bing.com/msrewards/api/v1/enroll?"+session.getQueryParameterString());
         }
         if(url.equals("/images/create")){
