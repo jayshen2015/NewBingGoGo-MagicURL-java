@@ -179,15 +179,23 @@ public class NewBingGoGoServer extends NanoWSD {
             return getReturnError("66666666"+e.getMessage());
         }
         urlConnection.disconnect();
-         if(1==1)  return getReturnError(""+code);
-        //创建用于输出的流
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-        return NanoHTTPD.newFixedLengthResponse(
-                Response.Status.OK,
-                "application/json",
-                byteArrayInputStream,
-                len
-        );
+        
+        try{
+            return NanoHTTPD.newFixedLengthResponse(
+                    Response.Status.OK,
+                    "application/json",
+                    new String(byteArrayOutputStream.toByteArray())
+            );
+        }catch (Exception ex) {
+            //创建用于输出的流
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+            return NanoHTTPD.newFixedLengthResponse(
+                    Response.Status.OK,
+                    "application/json",
+                    byteArrayInputStream,
+                    len
+            );
+        }
     }
 
     public static WebSocket getReturnErrorWebSocket(IHTTPSession session,String error){
